@@ -10,16 +10,28 @@ class Student:
     def add_courses(self, course_name):
         self.finished_courses.append(course_name)
 
+    def check_grade(grade):
+        if grade in range(1, 11):
+            return True
+        else:
+            return False
+
+    # def __str__(self):
+    #     res = f"Вот такая оценка {self.rate_hw}"
+    #     return res
+
+
 
     def rate_hw(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached \
-                and course in self.courses_in_progress and grade in range(1, 11):
+                and course in self.courses_in_progress and Student.check_grade(grade):
             if course in lecturer.grades:
                 lecturer.grades[course] += [grade]
             else:
                 lecturer.grades[course] = [grade]
         else:
-            return 'Ошибка'
+            # return print('Ошибка')
+            print(f'Уважаемый {self.name} {self.surname}, оценку {grade} ставить нельзя, допустимо от 1 до 10!')
 
 
 
@@ -55,11 +67,15 @@ class Lecturer(Mentor):
         self.grades = {}
         self.courses_attached = []
 
-    def check_grade(self):
-        self.grades in range(1, 11)
+    def check_grade(self, grade):
+        if grade in range(1, 11):
+            return True
+        else:
+            return False
 
     def __str__(self):
-        f"{self.check_grade()}"
+        res = f"Вот такая оценка {self.check_grade}"
+        return res
 
 
 
@@ -83,9 +99,9 @@ cool_reviewer.courses_attached += ['C++']
 cool_reviewer.courses_attached += ['Python']
 cool_reviewer_2.courses_attached += ['Python']
 
-best_student.rate_hw(cool_lecturer, 'Python', 5)
-best_student_2.rate_hw(cool_lecturer, 'Python', 9)
-cool_reviewer.rate_hw(best_student, 'Python', 10)
+best_student.rate_hw(cool_lecturer, 'Python', 16)
+best_student_2.rate_hw(cool_lecturer, 'Python', 13)
+cool_reviewer.rate_hw(best_student, 'Python', 12)
 cool_reviewer.rate_hw(best_student_2, 'Python', 15)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer_2.rate_hw(best_student_2, 'Python', 25)
@@ -93,14 +109,16 @@ cool_reviewer_2.rate_hw(best_student_2, 'Python', 25)
 # cool_mentor.rate_hw(best_student, 'Python', 10)
 # cool_mentor.rate_hw(best_student, 'C++', 10)
 
-a = best_student_2.grades
+a = best_student.grades
 b = cool_reviewer.courses_attached
 c = cool_reviewer.name
 d = cool_lecturer.grades
+e = cool_lecturer.check_grade
+
 # e = best_student_2.rate_hw(cool_lecturer, 'C++', 20)
 print(a)
 print(b)
 print(c)
 print(d)
-# print(e)
+# print(best_student.rate_hw)
 # print(best_student)
