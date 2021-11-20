@@ -7,8 +7,8 @@ class Student:
         self.courses_in_progress = []
         self.grades = {}
 
-    def add_courses(self, course_name):
-        self.finished_course.append(course_name)
+        def add_courses(self, course_name):
+            self.finished_course.append(course_name)
 
 
 class Mentor:
@@ -29,19 +29,12 @@ class Mentor:
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
-best_student.courses_in_progress += ['C++']
 
 cool_mentor = Mentor('Some', 'Buddy')
-cool_mentor.courses_attached += ['C++']
+cool_mentor.courses_attached += ['Python']
 
 cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'C++', 10)
 
-a = best_student.grades
-b = cool_mentor.courses_attached
-print(a)
-print(b)
-# print(best_student)
+print(best_student.grades)
